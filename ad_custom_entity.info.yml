@@ -1,0 +1,5 @@
+name: AD Custom Entity
+type: module
+description: 'Provides a custom entity.'
+package: AD
+core: 8.x

@@ -1,0 +1,20 @@
+myentity.settings_tab:
+  route_name: ad_custom_entity_myentity.myentity_settings
+  base_route: ad_custom_entity_myentity.myentity_settings
+  title: Settings
+
+myentity.view:
+  route_name: entity.ad_custom_entity_myentity.canonical
+  base_route: entity.ad_custom_entity_myentity.canonical
+  title: View
+
+myentity.page_edit:
+  route_name: entity.ad_custom_entity_myentity.edit_form
+  base_route: entity.ad_custom_entity_myentity.canonical
+  title: Edit
+
+myentity.delete_confirm:
+  route_name:  entity.ad_custom_entity_myentity.delete_form
+  base_route:  entity.ad_custom_entity_myentity.canonical
+  title: Delete
+  weight: 10

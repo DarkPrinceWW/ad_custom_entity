@@ -1,0 +1,11 @@
+entity.ad_custom_entity_myentity.collection:
+  title: 'AD Custom Entity: MyEntity Listing'
+  route_name: entity.ad_custom_entity_myentity.collection
+  description: 'List MyEntity'
+  weight: 10
+  
+ad_custom_entity_myentity.admin.structure.settings:
+  title: 'MyEntity Settings'
+  description: 'Configure myentity entity'
+  route_name: ad_custom_entity_myentity.myentity_settings
+  parent: system.admin_structure

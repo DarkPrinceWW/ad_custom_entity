@@ -1,0 +1,54 @@
+entity.ad_custom_entity_myentity.canonical:
+  path: '/myentity/{ad_custom_entity_myentity}'
+  defaults:
+  # Calls the view controller.
+    _entity_view: 'ad_custom_entity_myentity'
+    _title: 'MyEntity Content'
+  requirements:
+  # Calls the access controller of the entity, $operation 'view'
+    _entity_access: 'ad_custom_entity_myentity.view'
+
+entity.ad_custom_entity_myentity.collection:
+  path: '/myentity/list'
+  defaults:
+  # Calls the list controller.
+    _entity_list: 'ad_custom_entity_myentity'
+    _title: 'MyEntity List'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'administer myentity entity'
+
+entity.ad_custom_entity_myentity.add_form:
+  path: '/myentity/add'
+  defaults:
+  # Calls the form.add controller.
+    _entity_form: 'ad_custom_entity_myentity.add'
+    _title: 'Add MyEntity'
+  requirements:
+    _entity_create_access: 'ad_custom_entity_myentity'
+
+entity.ad_custom_entity_myentity.edit_form:
+  path: '/myentity/{ad_custom_entity_myentity}/edit'
+  defaults:
+  # Calls the form.edit controller.
+    _entity_form: 'ad_custom_entity_myentity.edit'
+    _title: 'Edit MyEntity'
+  requirements:
+    _entity_access: 'ad_custom_entity_myentity.edit'
+
+entity.ad_custom_entity_myentity.delete_form:
+  path: '/myentity/{ad_custom_entity_myentity}/delete'
+  defaults:
+    # Calls the form.delete controller.
+    _entity_form: 'ad_custom_entity_myentity.delete'
+    _title: 'Delete MyEntity'
+  requirements:
+    _entity_access: 'ad_custom_entity_myentity.delete'
+
+ad_custom_entity_myentity.myentity_settings:
+  path: 'admin/structure/myentity'
+  defaults:
+    _form: '\Drupal\ad_custom_entity\Form\MyEntitySettingsForm'
+    _title: 'MyEntity Settings'
+  requirements:
+    _permission: 'administer myentity entity'

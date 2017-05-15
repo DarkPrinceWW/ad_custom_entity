@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * This is ad_custom_entity module.
+ */
+use Drupal\Core\Serialization\Yaml;
+
+/**
+ * Implements hook_modules_installed().
+ */
+function ad_custom_entity_modules_installed($modules) {
+  // Create a default content.
+  $path = drupal_get_path('module', 'ad_custom_entity');
+  $config = Yaml::decode(file_get_contents($path . '/config/install/ad_custom_entity.content.yml'));
+
+  foreach ($config['content'] as $data) {
+    $entity = \Drupal::entityTypeManager()
+      ->getStorage('ad_custom_entity_myentity')
+      ->create($data);
+    $entity->save();
+  }
+}

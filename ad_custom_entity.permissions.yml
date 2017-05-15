@@ -1,0 +1,11 @@
+view myentity entity:
+  title: 'View MyEntity entity'
+add myentity entity:
+  title: 'Add MyEntity entity'
+edit myentity entity:
+  title: 'Edit MyEntity Entity'
+delete myentity entity:
+  title: 'Delete MyEntity entity'
+administer myentity entity:
+  title: 'Administer MyEntity entity'
+  restrict access: TRUE
