@@ -1,4 +1,4 @@
-ad_custom_entity.myentity_add:
+ad_custom_entity_myentity_add:
   # Which route will be called by the link
   route_name: entity.ad_custom_entity_myentity.add_form
   title: 'Add MyEntity'

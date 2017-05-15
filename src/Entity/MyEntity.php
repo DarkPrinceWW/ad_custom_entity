@@ -14,7 +14,7 @@ use Drupal\ad_custom_entity\MyEntityInterface;
  *
  * @ContentEntityType(
  *   id = "ad_custom_entity_myentity",
- *   label = @Translation("MyEntity entity"),
+ *   label = @Translation("MyEntity"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\ad_custom_entity\Entity\Controller\MyEntityListBuilder",
@@ -64,9 +64,9 @@ class MyEntity extends ContentEntityBase implements MyEntityInterface {
   /**
    * {@inheritdoc}
    */
-  public function getChangedTimeAcrossTranslations()  {
+  public function getChangedTimeAcrossTranslations() {
     $changed = $this->getUntranslated()->getChangedTime();
-    foreach ($this->getTranslationLanguages(FALSE) as $language)    {
+    foreach ($this->getTranslationLanguages(FALSE) as $language) {
       $translation_changed = $this->getTranslation($language->getId())->getChangedTime();
       $changed = max($translation_changed, $changed);
     }
@@ -98,58 +98,59 @@ class MyEntity extends ContentEntityBase implements MyEntityInterface {
       ->setReadOnly(TRUE);
 
     $fields['title'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Name'))
+      ->setLabel(t('Title'))
       ->setDescription(t('The name of the MyEntity entity.'))
-      ->setSettings(array(
+      ->setSettings([
         'default_value' => '',
         'max_length' => 255,
         'text_processing' => 0,
-      ))
-      ->setDisplayOptions('view', array(
+      ])
+      ->setRequired(TRUE)
+      ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'string',
         'weight' => 0,
-      ))
-      ->setDisplayOptions('form', array(
+      ])
+      ->setDisplayOptions('form', [
         'type' => 'string_textfield',
         'weight' => 0,
-      ))
+      ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['description'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('Description'))
       ->setDescription(t('The description of the MyEntity entity.'))
-      ->setSettings(array(
+      ->setSettings([
         'default_value' => '',
-      ))
-      ->setDisplayOptions('view', array(
+      ])
+      ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'basic_string',
         'weight' => 10,
-      ))
-      ->setDisplayOptions('form', array(
+      ])
+      ->setDisplayOptions('form', [
         'type' => 'text_textarea',
         'weight' => 10,
-      ))
+      ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['link'] = BaseFieldDefinition::create('link')
-      ->setLabel(t('Description'))
+      ->setLabel(t('Link'))
       ->setDescription(t('The link of the MyEntity entity.'))
-      ->setSettings(array(
+      ->setSettings([
         'default_value' => '',
-      ))
-      ->setDisplayOptions('view', array(
+      ])
+      ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'link',
         'weight' => 15,
-      ))
-      ->setDisplayOptions('form', array(
+      ])
+      ->setDisplayOptions('form', [
         'type' => 'link_default',
         'weight' => 15,
-      ))
+      ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 

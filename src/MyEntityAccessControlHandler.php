@@ -8,9 +8,9 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Access controller for the comment entity.
+ * Access controller for the MyEntity entity.
  *
- * @see \Drupal\comment\Entity\Comment.
+ * @see \Drupal\ad_custom_entity\Entity\MyEntity.
  */
 class MyEntityAccessControlHandler extends EntityAccessControlHandler {
 

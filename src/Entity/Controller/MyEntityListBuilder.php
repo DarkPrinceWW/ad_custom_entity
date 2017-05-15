@@ -8,7 +8,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
- * Provides a list controller for ad_custom_entity_myentity entity.
+ * Provides a list controller for MyEntity entity.
  *
  * @ingroup ad_custom_entity
  */
@@ -23,10 +23,10 @@ class MyEntityListBuilder extends EntityListBuilder {
    */
   public function render() {
     $build['description'] = [
-      '#markup' => $this->t('AD Custom Entity implements a MyEntity model. These myentities are fieldable entities. You can manage the fields on the <a href="@adminlink">AD Custom Entity</a>.', array(
+      '#markup' => $this->t('AD Custom Entity implements a MyEntity model. These myentities are fieldable entities. You can manage the fields on the MyEntity settings <a href="@adminlink">page</a>.', [
         '@adminlink' => \Drupal::urlGenerator()
           ->generateFromRoute('ad_custom_entity_myentity.myentity_settings'),
-      )),
+      ]),
     ];
 
     $build += parent::render();
@@ -58,15 +58,11 @@ class MyEntityListBuilder extends EntityListBuilder {
     $row['id'] = $entity->id();
     $row['title'] = $entity->link();
     $row['description'] = $entity->description->value;
-
-    $link_value = $entity->link->getValue();
     $link = '';
-    if (!empty($link_value)) {
-      $link_title = !empty($link_value[0]['title']) ? $link_value[0]['title'] : $link_value[0]['uri'];
-      $link_url = Url::fromUri($link_value[0]['uri']);
-      $link = Link::fromTextAndUrl($link_title, $link_url);
+    if (!empty($entity->link->uri)) {
+      $link_url = Url::fromUri($entity->link->uri);
+      $link = Link::fromTextAndUrl($entity->link->title, $link_url);
     }
-
     $row['link'] = $link;
     $row['language'] = $entity->langcode->value;
     return $row + parent::buildRow($entity);
